@@ -1,55 +1,62 @@
 const BASE_URL = 'https://opentdb.com/api'
 const randomTrivia = 'https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple'
-const dropdownCategory = document.querySelector('#dropdown-categories')
-const question = document.querySelector('#question')
-const answers = document.querySelectorAll('.answers')
 
+const questionLocation = document.querySelector('#question')
 
-let questionsArray = []
+// const answer = document.querySelector('.answer')
+// console.log(answer)
 
-let winner = () => {
-    console.log('yay')
-}
+const buttons = document.querySelectorAll('.answer-btn')
 
-let loser = () => {
-  console.log('boo')
-}
+const randomIndex = Math.floor(Math.random() * 2)
 
-const refineData = (qArray) => {
-  let questionsArray = qArray.map((questionElement, index) => {
-    // let incorrect = questionElement.incorrect_answer.map(ans => {
-    // ans.
-    // })
-    // console.log(answers.length)
-    if (index === 0) {
-      question.innerHTML =`<div class="question">${questionElement.question}</div>`
-      for (i = 0; i < answers.length; i++) {
-        if (i === 0) {
-          answers[i].innerHTML = `${questionElement.correct_answer}`
-          answers[i].addEventListener('click', () => {
-              winner()
-          })
-        }
-        else {
-          questionElement.incorrect_answers.forEach(ans => {
-            answers[i].innerHTML = `${questionElement.incorrect_answers[i - 1]}`
-            // answers[i].addEventListener('click', () => {
-            //   loser()
-        //})
-      })
-    }
+let score = 0
+
+const formatData = (resultArray, idx=0) => {
+  let indexArr = [0, 1]
+
+  function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
   }
-}
-  const answersFilled = document.querySelectorAll('.answers')
-    console.log(answersFilled)
-    // console.log(questionsArray)
-    // let formattedQuestions = {
-    //   question: questionElement.question,
-    //   correct_answer: questionElement.correct_answer,
-    //   incorrect: questionElement.incorrect_answers
-    // }
+  shuffle(indexArr);
+  console.log(resultArray)
+  resultArray.map((ans, index) => {
+
+    // x.push({ index: index, ans: [ans.correct_answer, ans.incorrect_answers[0]] })
+    if (index === idx) {
+      questionLocation.innerHTML = ans.question
+      buttons[indexArr[0]].innerHTML = ans.correct_answer
+      buttons[indexArr[1]].innerHTML = ans.incorrect_answers[0]
+
+
+      let but1 = buttons[indexArr[0]].addEventListener('click', () => {
+        if (buttons[indexArr[0]].innerHTML === ans.correct_answer) {
+          console.log('correct')
+          formatData(resultArray, idx + 1)
+          score = score + 1
+        } else {
+          console.log('incorrect')
+
+        }
+      })
+      let but2 = buttons[indexArr[1]].addEventListener('click', () => {
+        if (buttons[indexArr[0]].innerHTML === ans.incorrect_answers[0]) {
+          console.log('correct')
+          formatData(resultArray, idx + 1)
+          score = score + 1
+          
+        } else {
+          console.log('incorrect')
+
+        }
+      })
+      console.log(score)
+    }
   })
-  // console.log(questionsArray)
+  console.log(buttons, resultArray)
+  if (resultArray === 'correct_answer') {
+    console.log('test')
+  }
 }
 
 let randomQuestions = async () => {
@@ -57,81 +64,11 @@ let randomQuestions = async () => {
     .then(res => {
       console.log(res)
       let questionsArray = res.data.results
-      refineData(questionsArray)
       console.log(questionsArray)
+      formatData(questionsArray)
     }).catch(err => {
       console.log(err)
     })
 }
 randomQuestions();
 
-  // let currentQuestion = {}
-  // let score = 0;
-  // let questionCounter = 0
-  // let availableQuestions = []
-
-  // const questions = ['ada?', 'asdaa?', 'asdasdasd?', 'asdasdasd?']
-
-
-  // startGame = () =>{
-  //   questionNumber = 0
-  //   score = 0;
-  //   availableQuestions = [...questions]
-  //   console.log(availableQuestions)
-  //   getNewQuestions()
-  // }
-  // getNewQuestions = () => {
-  //   questionNumber += 1
-  //   const questionIndex = Math.floor(Math.random() * availableQuestions.length)
-  //   currentQuestion = availableQuestions[questionIndex]
-  //   console.log(currentQuestion)
-  //   question.innerText = currentQuestion
-  //   availableQuestions.splice(questionIndex, 1)
-  // }
-
-  // startGame();
-
-  // let categories = async () => {
-  //   await axios.get(`${BASE_URL}_category.php`)
-  //     .then(res => {
-  //       const triviaArray = res.data.trivia_categories
-
-  //       for (let i = 0; i < triviaArray.length; i += 1) {
-  //         dropdownCategory.innerHTML += `<option id=${triviaArray[i].id}>${triviaArray[i].name}</option>`
-  //       }
-
-  //       }).catch(err => {
-  //         console.log(err)
-  //       })
-  // }
-
-  // categories();
-
-  //         for (let i = 0; i < generalCatQuestions.length; i += 1) {
-  //           let question = generalCatQuestions[i].question
-  //           let correctAnswer = generalCatQuestions[i].correct_answer
-  //           const questionDiv = document.createElement('div')
-  //           questionDiv.innerHTML = `<h3>${question}</h3>`
-  //           questionLocation.appendChild(questionDiv)
-  //           const answerBtn = document.createElement('button')
-  //           answerBtn.innerHTML = `${correctAnswer}`
-  //           questionDiv.appendChild(answerBtn)
-  //           let wrongAnswers = generalCatQuestions[i].incorrect_answers.forEach(incorrectAns => {
-  //           let wrong_answer = incorrectAns
-  //           const wrongAnswerBtn = document.createElement('button')
-  //           wrongAnswerBtn.innerHTML = `${wrong_answer}`
-  //           questionDiv.appendChild(wrongAnswerBtn)
-  //         })
-  //         }
-  //       }).catch(err => {
-  //       console.log(err)
-
-
-
-  // retrieve questions from api
-  // write function that displays one question at a time
-  // attach questions to question div
-  // retrieve correct answers
-  // retrieve incorrect answers
-  // create function to randomize order of correct and incorrect answers
-  // create a start game function
