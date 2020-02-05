@@ -1,62 +1,63 @@
 const BASE_URL = 'https://opentdb.com/api'
 const randomTrivia = 'https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple'
-
+const scoreLocation = document.querySelector('score')
 const questionLocation = document.querySelector('#question')
-
-// const answer = document.querySelector('.answer')
-// console.log(answer)
-
-const buttons = document.querySelectorAll('.answer-btn')
 
 const randomIndex = Math.floor(Math.random() * 2)
 
-let score = 0
+let score = 0;
 
-const formatData = (resultArray, idx=0) => {
+const formatData = (resultArray, idx = 0) => {
+  console.log(idx)
+  // console.log(resultArray)
+  for (let i = 0; i < 2; i++) {
+    let newButton = document.createElement('div')
+    newButton.classList.add('answer-btn')
+    document.querySelector('.answer-container').append(newButton)
+  }
+
+  const buttons = document.querySelectorAll('.answer-btn')
+
   let indexArr = [0, 1]
-
   function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
   }
   shuffle(indexArr);
-  console.log(resultArray)
-  resultArray.map((ans, index) => {
 
-    // x.push({ index: index, ans: [ans.correct_answer, ans.incorrect_answers[0]] })
-    if (index === idx) {
-      questionLocation.innerHTML = ans.question
-      buttons[indexArr[0]].innerHTML = ans.correct_answer
-      buttons[indexArr[1]].innerHTML = ans.incorrect_answers[0]
+  // console.log(indexArr)
+  
+  ans = resultArray[idx]
 
+  questionLocation.innerHTML = ans.question
+  buttons[indexArr[0]].innerHTML = ans.correct_answer
+  buttons[indexArr[1]].innerHTML = ans.incorrect_answers[0]
 
-      let but1 = buttons[indexArr[0]].addEventListener('click', () => {
-        if (buttons[indexArr[0]].innerHTML === ans.correct_answer) {
-          console.log('correct')
-          formatData(resultArray, idx + 1)
-          score = score + 1
-        } else {
-          console.log('incorrect')
-
-        }
-      })
-      let but2 = buttons[indexArr[1]].addEventListener('click', () => {
-        if (buttons[indexArr[0]].innerHTML === ans.incorrect_answers[0]) {
-          console.log('correct')
-          formatData(resultArray, idx + 1)
-          score = score + 1
-          
-        } else {
-          console.log('incorrect')
-
-        }
-      })
-      console.log(score)
+  let but1 = buttons[indexArr[0]].addEventListener('click', () => {
+    console.log('correct')
+    score = score + 1;
+    buttons.forEach(button => {
+    button.remove()
+    })
+    if (idx === 9) {
+      document.querySelector('#game-container').style.display = 'none'
+    } else {
+      return formatData(resultArray, idx + 1)
     }
   })
-  console.log(buttons, resultArray)
-  if (resultArray === 'correct_answer') {
-    console.log('test')
-  }
+  let but2 = buttons[indexArr[1]].addEventListener('click', () => {
+    buttons.forEach(button => {
+      button.remove()
+    })
+    if (idx === 9) {
+      document.querySelector('#game-container').style.display = 'none'
+    } else {
+      return formatData(resultArray, idx + 1)
+    }
+  })
+  console.log(score)
+  // if (idx = 10) {
+  //   alert('done')
+  // }
 }
 
 let randomQuestions = async () => {
@@ -71,4 +72,3 @@ let randomQuestions = async () => {
     })
 }
 randomQuestions();
-

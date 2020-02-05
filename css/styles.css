@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: 1px black solid; */
 }
 
 html, body{
@@ -21,22 +20,22 @@ header, footer{
   width: 100%;
   height: auto;
   background: #fff;
-  display: flex;
   color: #000;
+}
+
+h1{
+  font-family: 'Poiret One', cursive;
 }
 
 a{
-  text-decoration: none;
   color: #000;
+  text-decoration: none;
+  text-align: center;
 }
 
-#logo-image{
-  width: 10%;
-  height: auto;
-  object-fit: cover;
-  padding: 0;
-  margin: 0;
-}
+
+
+
 
 /* index.html styling */
 .container{
@@ -51,21 +50,17 @@ a{
 #home-container{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: space-between;
-  border: 10px solid #fff;
+  justify-content: space-around;
+  align-content: flex-start;
+  border: 3px solid #fff;
   height: 40%;
   background-color: #031321;
-}
-
-div > h1{
-  color: #fff;
-  font-size: 300%;
-  font-weight: 800;
-  margin: 10px;
+  box-shadow: 0px 0px 200px 0 rgba(255, 255, 255, 0.2), 
+  0 0px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #animate-tag{
+  font-family: 'Poiret One', cursive;
   color: #16578b;
   text-transform: uppercase;
   letter-spacing: 5px;
@@ -73,51 +68,141 @@ div > h1{
   overflow: hidden;
   text-decoration: none;
   transition: 0.2s;
-  padding: 5%;
+  padding: 5% 0;
   width: 50%;
-  margin: 5px auto;
+  margin: 10px auto;
   text-align: center;
 }
 
 #animate-tag:hover{
   color: #255784;
   background: #2196f3;
-  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+  box-shadow: 0 0 10px #041e33, 0 0 40px #0c4d83,
+  0 0 80px #3696e6;
 }
 
-.footer-container{
+
+
+
+
+/* game styling */
+header{
+  display: block;
+  padding: 1%;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  border: 1px solid #fff;
+}
+
+ul {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-content: center;
 }
 
-/* game styling */
+li{
+  text-decoration: none;
+  list-style: none;
+  text-align: center;
+  padding: 0 10%;
+}
+
+div > h1{
+  color: #fff;
+  font-size: 300%;
+  font-weight: 800;
+  margin: 15px 3%;
+  text-align: center;
+}
+
+.navigation-links {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 h2{
   color: #fff;
-  font-size: 100%;
+  font-size: 150%;
+  font-family: 'Poiret One', cursive;
 }
 
-button{
-  /* margin: 20%; */
+.answer-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-between;
+}
+
+.answer-btn{
+  color: #fff;
+  font-family: 'Poiret One', cursive;
+  width: 50%;
+  font-size: 150%;
+  text-transform: uppercase;
+  letter-spacing: 5px;
 }
 
 #game-container{
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  width: 80%;
-}
-
-.score-box, .time-box{
-color: #fff;
-}
-
-.answer{
-  /* color: #fff; */
-  text-align: center;
-  /* display: none; */
+  width: 50%;
 }
 
 #question {
   text-align: center;
+  font-size: 250%;
+  font-weight: 800;
+  margin: 10% 0;
 }
+
+a:hover{
+  transition-delay: 1s;
+}
+
+a span:nth-child(1){
+  top:0;
+  left: -100%;
+  background: linear-gradient(90deg,transparent,#2196f3);
+}
+
+a:hover span:nth-child(1){
+  left: 100%;
+  transition: 1s;
+}
+
+a span:nth-child(1){
+  
+}
+
+a span:nth-child(2){
+  
+}
+
+a span:nth-child(2){
+  
+}
+
+a span:nth-child(3){
+  
+}
+
+a span:nth-child(3){
+  
+}
+
+a span:nth-child(4){
+  
+}
+
+a span:nth-child(4){
+  
+}
+
+
+

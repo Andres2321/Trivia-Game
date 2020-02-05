@@ -6,7 +6,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
   <script defer src="js/main.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <title>Trivia game</title>
@@ -15,29 +17,25 @@
 <body>
 
   <header>
-    <div class="header-container">
-      <div id="logo-picture"></div>
-      <nav>
-        <a href="index.html">HOME</a>
-      </nav>
-    </div>
+    <nav>
+      <h3>Random Trivia</h3>
+      <ul class="navigation-links">
+        <li><a href="#">Instructions</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+      <a href="index.html">HOME</a>
+    </nav>
   </header>
-  <!-- <select name="dropdown" id="dropdown-categories">
-  </select>
-  <section> -->
-    <div class="container">
-      <div id="game-container">
-        <h2 id="question">QUESTION?</h2>
-        <!-- <button onclick="revealFunction()">Reveal Answer</button>   -->
-        <button class="answer-btn correct">Choice 1
 
-        </button>
-        <button class="answer-btn">Choice 2</button>
-        <button class="answer-btn">Choice 3</button>
-        <button class="answer-btn">Choice 4</button>
+  <div class="container">
+    <div id="game-container">
+      <!-- <div class="score">score</div> -->
+      <h2 id="question">QUESTION?</h2>
+      <div class="answer-container">
       </div>
-    </div> 
-  </section>
+    </div>
+  </div>
   <footer>
   </footer>
 </body>
