@@ -13,7 +13,7 @@ const formatData = (resultArray, idx = 0) => {
 
   for (let i = 0; i < 2; i++) {
     let newButton = document.createElement('div')
-    newButton.classList.add('answer-btn')
+    newButton.classList.add('answer-btn', 'animate-tag')
     document.querySelector('.answer-container').append(newButton)
   }
 
@@ -32,7 +32,6 @@ const formatData = (resultArray, idx = 0) => {
   buttons[indexArr[1]].innerHTML = ans.incorrect_answers[0]
 
   let but1 = buttons[indexArr[0]].addEventListener('click', () => {
-    // console.log('correct')
     score = score + 1;
     buttons.forEach(button => {
       button.remove()
@@ -40,10 +39,6 @@ const formatData = (resultArray, idx = 0) => {
     if (idx === 9) {
       document.querySelector('#game-container').style.display = 'none'
       document.querySelector('#score-board-container').style.display = 'flex'
-      // let scoreDiv = document.createElement('div')
-      // scoreDiv.InnerHTML = `${score}`
-      // scoreLocation.appendChild(scoreDiv)
-      // console.log(scoreDiv)
       document.querySelector('.score').innerHTML = `Score: ${score}`
       document.querySelector('.question').innerHTML = `questions: ${score}/10`
       document.querySelector('.average').innerHTML = `Average: ${(score/10)*100}%`
@@ -65,8 +60,6 @@ const formatData = (resultArray, idx = 0) => {
       return formatData(resultArray, idx + 1)
     }
   })
-  // console.log(score)
-
 }
 
 let randomQuestions = async () => {
