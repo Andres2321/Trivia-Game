@@ -1,6 +1,8 @@
 const BASE_URL = 'https://opentdb.com/api'
 const randomTrivia = 'https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple'
-const scoreLocation = document.querySelector('score')
+
+const scoreLocation = document.querySelector('.score')
+const questionAverage = document.querySelector('.average')
 const questionLocation = document.querySelector('#question')
 
 const randomIndex = Math.floor(Math.random() * 2)
@@ -8,8 +10,7 @@ const randomIndex = Math.floor(Math.random() * 2)
 let score = 0;
 
 const formatData = (resultArray, idx = 0) => {
-  console.log(idx)
-  // console.log(resultArray)
+
   for (let i = 0; i < 2; i++) {
     let newButton = document.createElement('div')
     newButton.classList.add('answer-btn')
@@ -24,8 +25,6 @@ const formatData = (resultArray, idx = 0) => {
   }
   shuffle(indexArr);
 
-  // console.log(indexArr)
-  
   ans = resultArray[idx]
 
   questionLocation.innerHTML = ans.question
@@ -36,10 +35,18 @@ const formatData = (resultArray, idx = 0) => {
     console.log('correct')
     score = score + 1;
     buttons.forEach(button => {
-    button.remove()
+      button.remove()
     })
     if (idx === 9) {
       document.querySelector('#game-container').style.display = 'none'
+      document.querySelector('#score-board-container').style.display = 'flex'
+      // let scoreDiv = document.createElement('div')
+      // scoreDiv.InnerHTML = `${score}`
+      // scoreLocation.appendChild(scoreDiv)
+      // console.log(scoreDiv)
+      document.querySelector('.score').innerHTML = `Score: ${score}`
+      document.querySelector('.question').innerHTML = `questions: ${score}/10`
+      document.querySelector('.average').innerHTML = `Average: ${(score/10)*100}%`
     } else {
       return formatData(resultArray, idx + 1)
     }
@@ -50,14 +57,16 @@ const formatData = (resultArray, idx = 0) => {
     })
     if (idx === 9) {
       document.querySelector('#game-container').style.display = 'none'
+      document.querySelector('#score-board-container').style.display = 'flex'
+      document.querySelector('.score').innerHTML = `Score: ${score}`
+      document.querySelector('.question').innerHTML = `questions: ${score}/10`
+      document.querySelector('.average').innerHTML = `Average: ${(score/10)*100}%`
     } else {
       return formatData(resultArray, idx + 1)
     }
   })
   console.log(score)
-  // if (idx = 10) {
-  //   alert('done')
-  // }
+
 }
 
 let randomQuestions = async () => {

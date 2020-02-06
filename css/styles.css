@@ -61,7 +61,7 @@ a{
 
 #animate-tag{
   font-family: 'Poiret One', cursive;
-  color: #16578b;
+  color: #fff;
   text-transform: uppercase;
   letter-spacing: 5px;
   font-size: 2em;
@@ -132,6 +132,11 @@ h2{
   font-family: 'Poiret One', cursive;
 }
 
+.score, .average, .question{
+  font-size: 250%;
+  color: #fff;
+}
+
 .answer-container{
   display: flex;
   flex-direction: row;
@@ -142,10 +147,16 @@ h2{
 .answer-btn{
   color: #fff;
   font-family: 'Poiret One', cursive;
-  width: 50%;
   font-size: 150%;
   text-transform: uppercase;
   letter-spacing: 5px;
+  cursor: pointer;
+}
+
+#score-board-container{
+  /* display: none; */
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #game-container{
@@ -160,49 +171,4 @@ h2{
   font-weight: 800;
   margin: 10% 0;
 }
-
-a:hover{
-  transition-delay: 1s;
-}
-
-a span:nth-child(1){
-  top:0;
-  left: -100%;
-  background: linear-gradient(90deg,transparent,#2196f3);
-}
-
-a:hover span:nth-child(1){
-  left: 100%;
-  transition: 1s;
-}
-
-a span:nth-child(1){
-  
-}
-
-a span:nth-child(2){
-  
-}
-
-a span:nth-child(2){
-  
-}
-
-a span:nth-child(3){
-  
-}
-
-a span:nth-child(3){
-  
-}
-
-a span:nth-child(4){
-  
-}
-
-a span:nth-child(4){
-  
-}
-
-
 
