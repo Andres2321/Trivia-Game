@@ -2,7 +2,7 @@
 >created by Andres Arias 
 
 Try to corretly answer as many as you can (15 random questions)
-
+Here is a link to Surge (http://rand-trivia-game.surge.sh/)
 
 ## SNAPSHOT
 
@@ -25,6 +25,10 @@ Try to corretly answer as many as you can (15 random questions)
 4. CSS
 5. Axios
 
-
+# Work in Progress
+1. High-score using localStorage
+2. Multiple trivia categories
+3. Feature to chose number of questions
+4. True/False trivia
 
 
