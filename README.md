@@ -4,8 +4,7 @@
 Try to corretly answer as many as you can (15 random questions)
 
 
-
-# SNAPSHOT
+## SNAPSHOT
 
 ### Home screen
 
@@ -19,6 +18,12 @@ Try to corretly answer as many as you can (15 random questions)
 
 ![trivia game snapshot- score](https://i.imgur.com/OlIocwz.png)
 
+#### This game was built with:
+1. Javascript
+2. Open Trivia DB API
+3. HTML
+4. CSS
+5. Axios
 
 
 
