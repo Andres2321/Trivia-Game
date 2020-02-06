@@ -32,7 +32,7 @@ const formatData = (resultArray, idx = 0) => {
   buttons[indexArr[1]].innerHTML = ans.incorrect_answers[0]
 
   let but1 = buttons[indexArr[0]].addEventListener('click', () => {
-    console.log('correct')
+    // console.log('correct')
     score = score + 1;
     buttons.forEach(button => {
       button.remove()
@@ -65,19 +65,19 @@ const formatData = (resultArray, idx = 0) => {
       return formatData(resultArray, idx + 1)
     }
   })
-  console.log(score)
+  // console.log(score)
 
 }
 
 let randomQuestions = async () => {
   await axios.get(randomTrivia)
     .then(res => {
-      console.log(res)
+      // console.log(res)
       let questionsArray = res.data.results
-      console.log(questionsArray)
+      // console.log(questionsArray)
       formatData(questionsArray)
     }).catch(err => {
-      console.log(err)
+      // console.log(err)
     })
 }
 randomQuestions();
