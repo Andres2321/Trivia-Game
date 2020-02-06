@@ -1,5 +1,4 @@
-const BASE_URL = 'https://opentdb.com/api'
-const randomTrivia = 'https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple'
+const randomTrivia = 'https://opentdb.com/api.php?amount=15&category=9&difficulty=medium&type=multiple'
 
 const scoreLocation = document.querySelector('.score')
 const questionAverage = document.querySelector('.average')
@@ -36,12 +35,12 @@ const formatData = (resultArray, idx = 0) => {
     buttons.forEach(button => {
       button.remove()
     })
-    if (idx === 9) {
+    if (idx === 14) {
       document.querySelector('#game-container').style.display = 'none'
       document.querySelector('#score-board-container').style.display = 'flex'
       document.querySelector('.score').innerHTML = `Score: ${score}`
-      document.querySelector('.question').innerHTML = `questions: ${score}/10`
-      document.querySelector('.average').innerHTML = `Average: ${(score/10)*100}%`
+      document.querySelector('.question').innerHTML = `questions: ${score}/15`
+      document.querySelector('.average').innerHTML = `Average: ${Math.floor((score/15)*100)}%`
     } else {
       return formatData(resultArray, idx + 1)
     }
@@ -50,12 +49,12 @@ const formatData = (resultArray, idx = 0) => {
     buttons.forEach(button => {
       button.remove()
     })
-    if (idx === 9) {
+    if (idx === 14) {
       document.querySelector('#game-container').style.display = 'none'
       document.querySelector('#score-board-container').style.display = 'flex'
       document.querySelector('.score').innerHTML = `Score: ${score}`
-      document.querySelector('.question').innerHTML = `questions: ${score}/10`
-      document.querySelector('.average').innerHTML = `Average: ${(score/10)*100}%`
+      document.querySelector('.question').innerHTML = `questions: ${score}/15`
+      document.querySelector('.average').innerHTML = `Average: ${Math.floor((score/15)*100)}%`
     } else {
       return formatData(resultArray, idx + 1)
     }
