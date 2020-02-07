@@ -1,5 +1,6 @@
 # Random Trivia Game
->created by Andres Arias 
+>Created by Andres Arias
+>With the help of GA instructors
 
 Try to corretly answer as many as you can (15 random questions)
 Here is a link to Surge (http://rand-trivia-game.surge.sh/)
