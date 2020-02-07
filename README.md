@@ -1,5 +1,6 @@
 # Random Trivia Game
 >Created by Andres Arias
+
 >With the help of GA instructors
 
 Try to corretly answer as many as you can (15 random questions)
